@@ -18,3 +18,5 @@ set incsearch ignorecase hlsearch
 
 set background=dark
 colorscheme solarized
+
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
