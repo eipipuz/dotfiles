@@ -20,3 +20,8 @@ set background=dark
 colorscheme solarized
 
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
+
+augroup Shebang
+	autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python\<nl>\<nl>\"|$
+	autocmd BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl>\<nl>\"|$
+augroup END
