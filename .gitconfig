@@ -1,3 +1,5 @@
 [user]
 	name = Guillermo Alcantara
 	email = guillermo.alcantara@gmail.com
+[push]
+	default = simple
