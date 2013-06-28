@@ -3,3 +3,7 @@
 	email = guillermo.alcantara@gmail.com
 [push]
 	default = simple
+[core]
+	editor = vim
+[merge]
+	tool = vimdiff
