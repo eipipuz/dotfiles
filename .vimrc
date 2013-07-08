@@ -11,6 +11,8 @@ Bundle 'Syntastic'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'git://github.com/scrooloose/nerdtree.git'
 
+set rtp+=/usr/local/Cellar/go/1.1.1/misc/vim/
+
 filetype indent plugin on
 filetype plugin on
 
