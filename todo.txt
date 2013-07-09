@@ -1,0 +1,10 @@
+* Add https://github.com/robbyrussell/oh-my-zsh installer
+	* brew install tig
+	* brew install fasd
+	* brew install cmake
+		* Add https://github.com/sickill/stderred installer
+* Add https://github.com/tomislav/osx-terminal.app-colors-solarized installer
+* Add https://github.com/gmarik/vundle installer
+	* :BundleInstall
+
+* Add github keys
