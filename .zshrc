@@ -2,7 +2,7 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 
 alias gs='git status'
-alias grp="grep -IR"
+alias grp="grep --exclude-dir=.git -IR"
 alias zrc="vim ~/.zshrc; source ~/.zshrc"
 
 plugins=(git fasd)
