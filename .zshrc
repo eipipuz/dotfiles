@@ -2,7 +2,7 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 
 alias gs='git status'
-alias grp="grep -IR"
+alias grp="grep --exclude-dir=.git -IR"
 alias zrc="vim ~/.zshrc; source ~/.zshrc"
 
 plugins=(git fasd)
@@ -10,8 +10,6 @@ plugins=(git fasd)
 export PATH=/usr/local/bin:$PATH:/usr/bin:/bin:/usr/sbin
 export PYTHONSTARTUP=$HOME/.pythonrc
 export DYLD_INSERT_LIBRARIES="${HOME}/stderred/build/libstderred.dylib${DYLD_INSERT_LIBRARIES:+:$DYLD_INSERT_LIBRARIES}"
-
-RPROMPT=%(?..[%?] )
 
 ######## ENV DEPENDANT LOGIC ##########
 source $HOME/.envrc
@@ -27,8 +25,21 @@ if [[ $WORK == true ]] ; then
 fi
 if [[ $PERSONAL == true ]] ; then
 	export PATH=$PATH:$HOME/.rvm/bin:$HOME/chrome
+	export GOPATH=$HOME/gocode
 fi
-
 ######## ENV DEPENDANT LOGIC ##########
 
 source $ZSH/oh-my-zsh.sh
+
+RPROMPT=%(?..[%?] )
+
+function unstderred() {
+	unset DYLD_INSERT_LIBRARIES
+}
+
+function stderred() {
+	export DYLD_INSERT_LIBRARIES="${HOME}/stderred/build/libstderred.dylib"
+}
+
+stderred
+
