@@ -11,6 +11,7 @@ Bundle 'Syntastic'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'git://github.com/scrooloose/nerdtree.git'
 Bundle 'eipipuz/factor.vim'
+Bundle 'fholgado/vim-autoclose'
 
 set rtp+=/usr/local/Cellar/go/1.1.1/misc/vim/
 
