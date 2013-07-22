@@ -20,7 +20,11 @@ filetype plugin on
 
 set incsearch ignorecase hlsearch
 
-set background=dark
+if $COLOR_THEME == "Solarized Dark"
+	set background=dark
+else
+	set background=light
+endif
 colorscheme solarized
 
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
