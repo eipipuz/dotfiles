@@ -33,6 +33,20 @@ source $ZSH/oh-my-zsh.sh
 
 RPROMPT=%(?..[%?] )
 
+export COLOR_THEME="Solarized Light"
+
+function toggleLight() {
+	if [[ $COLOR_THEME == "Solarized Dark" ]] ; then
+		export COLOR_THEME="Solarized Light"
+	else
+		export COLOR_THEME="Solarized Dark"
+	fi
+
+	unstderred
+	osascript -e "tell application \"Terminal\" to set current settings of front window to settings set \"$COLOR_THEME\""
+	stderred
+}
+
 function unstderred() {
 	unset DYLD_INSERT_LIBRARIES
 }
