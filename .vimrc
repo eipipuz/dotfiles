@@ -31,3 +31,6 @@ augroup Shebang
 augroup END
 
 autocmd BufNewFile *.factor 0put=\"! Copyright (C) 2013 Guillermo Alcantara\<nl>! See http://factorcode.org/license.txt for BSD license.\<nl>USING:  ;\<nl>IN: \"|$
+
+autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab|set softtabstop=4
+let g:syntastic_python_pylint_args='-d C0103 -f parseable -r n -i y'

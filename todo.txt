@@ -8,3 +8,5 @@
 	* :BundleInstall
 
 * Add github keys
+
+pip install pylint
