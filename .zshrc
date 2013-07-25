@@ -18,7 +18,7 @@ if [[ $WORK == true ]] ; then
 	if [[ $VIRTUAL == false ]] ; then
 		plugins+=(vagrant)
 		export PATH=$HOME/ansible/bin:$PATH
-		export PYTHONPATH=$HOME/ansible/lib:$HOME/FuelSDK-Python
+		export PYTHONPATH=$HOME/ansible/lib:$HOME/FuelSDK-Python:$HOME/Tryolabs/lively
 		export ANSIBLE_LIBRARY=$HOME/ansible/library
 		export MANPATH=$HOME/ansible/docs/man:
 	fi
