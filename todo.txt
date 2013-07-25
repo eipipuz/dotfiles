@@ -10,3 +10,4 @@
 * Add github keys
 
 pip install pylint
+pip install jedi

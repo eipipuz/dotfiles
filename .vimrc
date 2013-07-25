@@ -12,6 +12,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'git://github.com/scrooloose/nerdtree.git'
 Bundle 'eipipuz/factor.vim'
 Bundle 'fholgado/vim-autoclose'
+Bundle 'davidhalter/jedi-vim'
 
 set rtp+=/usr/local/Cellar/go/1.1.1/misc/vim/
 
@@ -37,4 +38,5 @@ augroup END
 autocmd BufNewFile *.factor 0put=\"! Copyright (C) 2013 Guillermo Alcantara\<nl>! See http://factorcode.org/license.txt for BSD license.\<nl>USING:  ;\<nl>IN: \"|$
 
 autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab|set softtabstop=4
-let g:syntastic_python_pylint_args='-d C0103 -f parseable -r n -i y'
+let g:syntastic_python_pylint_args='-d C0103 -d R0914 -f parseable -r n -i y'
+let g:ctrlp_custom_ignore = { 'dir': '\.git$', 'file': '\.pyc$' }
