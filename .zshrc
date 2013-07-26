@@ -21,6 +21,15 @@ if [[ $WORK == true ]] ; then
 		export PYTHONPATH=$HOME/ansible/lib:$HOME/FuelSDK-Python:$HOME/Tryolabs/lively
 		export ANSIBLE_LIBRARY=$HOME/ansible/library
 		export MANPATH=$HOME/ansible/docs/man:
+		alias vsd="vagrant ssh dev"
+
+		function update_box() {
+			ansible-playbook -i hosts_onebox site_onebox.yml --limit=vagrantdev
+		}
+
+		function load_fixtures() {
+			ansible-playbook -i hosts_onebox extra-playbooks/onebox/load_fixture.yml --limit=vagrantdev
+		}
 	fi
 fi
 if [[ $PERSONAL == true ]] ; then
@@ -32,8 +41,6 @@ fi
 source $ZSH/oh-my-zsh.sh
 
 RPROMPT=%(?..[%?] )
-
-export COLOR_THEME="Solarized Light"
 
 function toggleLight() {
 	if [[ $COLOR_THEME == "Solarized Dark" ]] ; then
@@ -55,5 +62,13 @@ function stderred() {
 	export DYLD_INSERT_LIBRARIES="${HOME}/stderred/build/libstderred.dylib"
 }
 
-stderred
+function getTheme() {
+	unstderred
+	COLOR_THEME=`osascript -e "tell application \"Terminal\" to get the name of current settings of front window"`
+	export COLOR_THEME="$COLOR_THEME"
+	stderred
+}
 
+getTheme
+
+stderred
