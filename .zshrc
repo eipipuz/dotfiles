@@ -2,7 +2,7 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 
 alias gs='git status'
-alias grp="grep --exclude-dir=.git -IR"
+alias grp="grep --exclude-dir=.git -iR"
 alias zrc="vim ~/.zshrc; source ~/.zshrc"
 
 plugins=(git fasd)
@@ -29,6 +29,10 @@ if [[ $WORK == true ]] ; then
 
 		function load_fixtures() {
 			ansible-playbook -i hosts_onebox extra-playbooks/onebox/load_fixture.yml --limit=vagrantdev
+		}
+
+		function migrate() {
+			python manage.py schemamigration core --settings=lively.settings_gunicorn --auto
 		}
 	fi
 fi
