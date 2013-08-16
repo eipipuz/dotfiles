@@ -45,5 +45,6 @@ let g:ctrlp_custom_ignore = { 'dir': '\.git$', 'file': '\.pyc$' }
 let g:jedi#use_tabs_not_buffers = 0
 
 set listchars=eol:$,tab:>-,trail:.,extends:>,precedes:<
+set bs=2
 
 match OverLength /\%81v.\+/
