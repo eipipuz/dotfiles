@@ -11,6 +11,8 @@ plugins=(git fasd)
 export PATH=/usr/local/bin:$PATH:/usr/bin:/bin:/usr/sbin
 export PYTHONSTARTUP=$HOME/.pythonrc
 export DYLD_INSERT_LIBRARIES="${HOME}/stderred/build/libstderred.dylib${DYLD_INSERT_LIBRARIES:+:$DYLD_INSERT_LIBRARIES}"
+export GREP_OPTIONS='--color=auto'
+export GREP_COLOR='1;35;40'
 
 ######## ENV DEPENDANT LOGIC ##########
 source $HOME/.envrc
@@ -25,11 +27,15 @@ if [[ $WORK == true ]] ; then
 		alias vsd="vagrant ssh dev"
 
 		function update_box() {
+			pushd /Users/memo/Tryolabs/deploy
 			ansible-playbook -i hosts_onebox site_onebox.yml --limit=vagrantdev
+			popd
 		}
 
 		function load_fixtures() {
+			pushd /Users/memo/Tryolabs/deploy
 			ansible-playbook -i hosts_onebox extra-playbooks/onebox/load_fixture.yml --limit=vagrantdev
+			popd
 		}
 
 		function migrate() {
