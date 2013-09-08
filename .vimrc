@@ -30,7 +30,7 @@ else
 endif
 colorscheme solarized
 
-autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
+set shiftwidth=2 tabstop=2
 
 augroup Shebang
 	autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python\<nl>\<nl>\"|$
@@ -45,6 +45,6 @@ let g:ctrlp_custom_ignore = { 'dir': '\.git$', 'file': '\.pyc$' }
 let g:jedi#use_tabs_not_buffers = 0
 
 set listchars=eol:$,tab:>-,trail:.,extends:>,precedes:<
-set bs=2
+set bs=2 "Normal backspace mode
 
 match OverLength /\%81v.\+/
