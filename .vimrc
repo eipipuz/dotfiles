@@ -13,6 +13,7 @@ Bundle 'git://github.com/scrooloose/nerdtree.git'
 Bundle 'eipipuz/factor.vim'
 Bundle 'fholgado/vim-autoclose'
 Bundle 'davidhalter/jedi-vim'
+Bundle 'kchmck/vim-coffee-script'
 
 set rtp+=/usr/local/Cellar/go/1.1.1/misc/vim/
 
