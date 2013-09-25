@@ -27,13 +27,13 @@ if [[ $WORK == true ]] ; then
 		alias vsd="vagrant ssh dev"
 
 		function update_box() {
-			pushd /Users/memo/Tryolabs/deploy
+			pushd /Users/memo/Tryolabs/deploy/provisioning
 			ansible-playbook -i hosts_onebox site_onebox.yml --limit=vagrantdev
 			popd
 		}
 
 		function load_fixtures() {
-			pushd /Users/memo/Tryolabs/deploy
+			pushd /Users/memo/Tryolabs/deploy/provisioning
 			ansible-playbook -i hosts_onebox extra-playbooks/onebox/load_fixture.yml --limit=vagrantdev
 			popd
 		}
