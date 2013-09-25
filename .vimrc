@@ -41,6 +41,7 @@ augroup END
 autocmd BufNewFile *.factor 0put=\"! Copyright (C) 2013 Guillermo Alcantara\<nl>! See http://factorcode.org/license.txt for BSD license.\<nl>USING:  ;\<nl>IN: \"|$
 
 autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab|set softtabstop=4
+autocmd FileType javascript set tabstop=2|set shiftwidth=2|set expandtab|set softtabstop=2
 let g:syntastic_python_pylint_args='-d C0103 -d R0914 -f parseable -r n -i y'
 let g:ctrlp_custom_ignore = { 'dir': '\.git$', 'file': '\.pyc$' }
 let g:jedi#use_tabs_not_buffers = 0
