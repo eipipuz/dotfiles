@@ -8,7 +8,7 @@ alias zrc="vim ~/.zshrc; source ~/.zshrc"
 
 plugins=(git fasd)
 
-export PATH=/usr/local/bin:$PATH:/usr/bin:/bin:/usr/sbin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin
 export PYTHONSTARTUP=$HOME/.pythonrc
 export DYLD_INSERT_LIBRARIES="${HOME}/stderred/build/libstderred.dylib${DYLD_INSERT_LIBRARIES:+:$DYLD_INSERT_LIBRARIES}"
 export GREP_OPTIONS='--color=auto'
