@@ -24,10 +24,10 @@ set incsearch ignorecase hlsearch
 
 if $COLOR_THEME == "Solarized Dark"
 	set background=dark
-	highlight OverLength ctermbg=darkblue
+	highlight ColorColumn ctermbg=darkblue
 else
 	set background=light
-	highlight OverLength ctermbg=lightgray
+	highlight ColorColumn ctermbg=lightgray
 endif
 colorscheme solarized
 
@@ -49,4 +49,4 @@ let g:jedi#use_tabs_not_buffers = 0
 set listchars=eol:$,tab:>-,trail:.,extends:>,precedes:<
 set bs=2 "Normal backspace mode
 
-match OverLength /\%81v.\+/
+let &colorcolumn="81"
