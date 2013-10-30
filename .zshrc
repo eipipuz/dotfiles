@@ -20,7 +20,7 @@ source $HOME/.envrc
 if [[ $WORK == true ]] ; then
 	if [[ $VIRTUAL == false ]] ; then
 		plugins+=(vagrant)
-		export PATH=$HOME/ansible/bin:$PATH
+		export PATH=/usr/local/share/npm/lib/node_modules/protractor/bin:$HOME/ansible/bin:/usr/local/Cellar/ruby/2.0.0-p247/bin:$PATH
 		export PYTHONPATH=$HOME/ansible/lib:$HOME/FuelSDK-Python:$HOME/Tryolabs/lively
 		export ANSIBLE_LIBRARY=$HOME/ansible/library
 		export MANPATH=$HOME/ansible/docs/man:
