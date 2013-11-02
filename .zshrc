@@ -44,7 +44,8 @@ if [[ $WORK == true ]] ; then
 	fi
 fi
 if [[ $PERSONAL == true ]] ; then
-	export PATH=$PATH:$HOME/.rvm/bin:$HOME/chrome
+	export PATH=$HOME/.rvm/gems/ruby-2.0.0-p195/bin:$HOME/.rvm/bin:$HOME/chrome:$HOME/android-sdk/tools:$PATH
+	export PATH=$HOME/android-sdk/build-tools/18.1.1/:$HOME/android-sdk/platform-tools:$HOME/android-sdk/build-tools:$PATH
 	export GOPATH=$HOME/gocode
 fi
 ######## ENV DEPENDANT LOGIC ##########
