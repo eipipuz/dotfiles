@@ -52,35 +52,43 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
-RPROMPT=%(?..[%?] )
+RPROMPT=%(?..[%?] ) # Print return code if not 0
 
-function toggleLight() {
-	if [[ $COLOR_THEME == "Solarized Dark" ]] ; then
+alias unstderred="unset DYLD_INSERT_LIBRARIES"
+alias stderred="export DYLD_INSERT_LIBRARIES="${HOME}/stderred/build/libstderred.dylib""
+
+if [[ $TERM_PROGRAM == "Apple_Terminal" ]] ; then
+	function toggleLight() {
+		if [[ $COLOR_THEME == "Solarized Dark" ]] ; then
+			export COLOR_THEME="Solarized Light"
+		else
+			export COLOR_THEME="Solarized Dark"
+		fi
+
+		unstderred
+		osascript -e "tell application \"Terminal\" to set current settings of front window to settings set \"$COLOR_THEME\""
+		stderred
+	}
+
+	function getTheme() {
+		unstderred
+		COLOR_THEME=`osascript -e "tell application \"Terminal\" to get the name of current settings of front window"`
+		export COLOR_THEME="$COLOR_THEME"
+		stderred
+	}
+
+	getTheme
+else
+	function light() {
+  	echo -e "\033]50;SetProfile=Light\a"
 		export COLOR_THEME="Solarized Light"
-	else
+	}
+	function dark() {
+		echo -e "\033]50;SetProfile=Default\a"
 		export COLOR_THEME="Solarized Dark"
-	fi
+  }
 
-	unstderred
-	osascript -e "tell application \"Terminal\" to set current settings of front window to settings set \"$COLOR_THEME\""
-	stderred
-}
-
-function unstderred() {
-	unset DYLD_INSERT_LIBRARIES
-}
-
-function stderred() {
-	export DYLD_INSERT_LIBRARIES="${HOME}/stderred/build/libstderred.dylib"
-}
-
-function getTheme() {
-	unstderred
-	COLOR_THEME=`osascript -e "tell application \"Terminal\" to get the name of current settings of front window"`
-	export COLOR_THEME="$COLOR_THEME"
-	stderred
-}
-
-getTheme
+	export COLOR_THEME="Solarized Dark"
+fi
 
 stderred
