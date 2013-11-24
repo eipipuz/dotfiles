@@ -11,3 +11,6 @@
 
 pip install pylint
 pip install jedi
+gem install wirble
+gem install awesome_print
+gem install interactive_editor
