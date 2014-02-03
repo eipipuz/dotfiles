@@ -25,16 +25,17 @@ if [[ $WORK == true ]] ; then
 		export ANSIBLE_LIBRARY=$HOME/ansible/library
 		export MANPATH=$HOME/ansible/docs/man:
 		alias vsd="vagrant ssh dev"
+		alias ios6sdk_install="sudo ln -s ~/iPhoneOS6.0.sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs"
 
 		function update_box() {
 			pushd /Users/memo/Tryolabs/deploy/provisioning
-			ansible-playbook -i hosts_onebox site_onebox.yml --limit=vagrantdev
+			ansible-playbook -i hosts_onebox site_onebox.yml --limit=vagrantdev $*
 			popd
 		}
 
 		function load_fixtures() {
 			pushd /Users/memo/Tryolabs/deploy/provisioning
-			ansible-playbook -i hosts_onebox extra-playbooks/onebox/qa_fixture.yml --limit=vagrantdev
+			ansible-playbook -i hosts_onebox extra-playbooks/onebox/qa_fixture.yml --limit=vagrantdev $*
 			popd
 		}
 
