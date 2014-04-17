@@ -46,11 +46,11 @@ set softtabstop=2
 
 autocmd FileType python set tabstop=4|set shiftwidth=4|set softtabstop=4
 autocmd FileType javascript set tabstop=2|set shiftwidth=2
-let g:syntastic_python_pylint_args='-d C0103 -d R0914 -f parseable -r n -i y'
+
 let g:ctrlp_custom_ignore = { 'dir': '\.git$', 'file': '\.pyc$' }
 let g:jedi#use_tabs_not_buffers = 0
 
 set listchars=eol:$,tab:>-,trail:.,extends:>,precedes:<
 set bs=2 "Normal backspace mode
 
-let &colorcolumn="81"
+let &colorcolumn="101"
