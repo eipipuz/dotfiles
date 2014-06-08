@@ -7,3 +7,5 @@
 	editor = vim
 [merge]
 	tool = vimdiff
+[color]
+	ui = auto

@@ -24,16 +24,17 @@ if [[ $WORK == true ]] ; then
 		export ANSIBLE_LIBRARY=$HOME/ansible/library
 		export MANPATH=$HOME/ansible/docs/man:
 		alias vsd="vagrant ssh dev"
+		alias ios6sdk_install="sudo ln -s ~/iPhoneOS6.0.sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs"
 
 		function update_box() {
 			pushd /Users/memo/Tryolabs/deploy/provisioning
-			ansible-playbook -i hosts_onebox site_onebox.yml --limit=vagrantdev
+			ansible-playbook -i hosts_onebox site_onebox.yml --limit=vagrantdev $*
 			popd
 		}
 
 		function load_fixtures() {
 			pushd /Users/memo/Tryolabs/deploy/provisioning
-			ansible-playbook -i hosts_onebox extra-playbooks/onebox/load_fixture.yml --limit=vagrantdev
+			ansible-playbook -i hosts_onebox extra-playbooks/onebox/qa_fixture.yml --limit=vagrantdev $*
 			popd
 		}
 
@@ -76,10 +77,27 @@ else
   	echo -e "\033]50;SetProfile=Light\a"
 		export COLOR_THEME="Solarized Light"
 	}
+
 	function dark() {
 		echo -e "\033]50;SetProfile=Default\a"
 		export COLOR_THEME="Solarized Dark"
   }
+
+	function sshInto() {
+		echo -e "\033]50;SetProfile=$1\a"
+		echo -e "\033]6;1;bg;$2;brightness;200\a"
+		ssh ubuntu@$3
+		if [[ $COLOR_THEME == "Solarized Dark" ]] ; then
+			dark
+		else
+			light
+		fi
+		echo -e "\033]6;1;bg;*;default\a"
+  }
+
+	alias man_box="sshInto Production red 54.215.223.59"
+	alias log_box="sshInto Logistics green 50.18.222.180"
+	alias ci_box="sshInto Development blue ci.mylivelydev.com"
 
 	export COLOR_THEME="Solarized Dark"
 fi
