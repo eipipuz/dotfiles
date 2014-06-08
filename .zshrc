@@ -10,7 +10,6 @@ plugins=(git fasd)
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin
 export PYTHONSTARTUP=$HOME/.pythonrc
-export DYLD_INSERT_LIBRARIES="${HOME}/stderred/build/libstderred.dylib${DYLD_INSERT_LIBRARIES:+:$DYLD_INSERT_LIBRARIES}"
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;35;40'
 
@@ -54,8 +53,6 @@ source $ZSH/oh-my-zsh.sh
 
 RPROMPT=%(?..[%?] ) # Print return code if not 0
 
-alias unstderred="unset DYLD_INSERT_LIBRARIES"
-alias stderred="export DYLD_INSERT_LIBRARIES="${HOME}/stderred/build/libstderred.dylib""
 
 if [[ $TERM_PROGRAM == "Apple_Terminal" ]] ; then
 	function toggleLight() {
@@ -65,16 +62,12 @@ if [[ $TERM_PROGRAM == "Apple_Terminal" ]] ; then
 			export COLOR_THEME="Solarized Dark"
 		fi
 
-		unstderred
 		osascript -e "tell application \"Terminal\" to set current settings of front window to settings set \"$COLOR_THEME\""
-		stderred
 	}
 
 	function getTheme() {
-		unstderred
 		COLOR_THEME=`osascript -e "tell application \"Terminal\" to get the name of current settings of front window"`
 		export COLOR_THEME="$COLOR_THEME"
-		stderred
 	}
 
 	getTheme
@@ -91,4 +84,3 @@ else
 	export COLOR_THEME="Solarized Dark"
 fi
 
-stderred
