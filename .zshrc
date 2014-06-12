@@ -4,14 +4,17 @@ ZSH_THEME="robbyrussell"
 alias gs='git status'
 alias gpo='gp origin'
 alias grp="grep --exclude=\*.{pyc,swp} --exclude-dir=.git -iR"
+alias grj="grep --exclude=\*.swp --exclude-dir={.git,dist,node_modules,app/components,app/assets} -iR"
 alias zrc="vim ~/.zshrc; source ~/.zshrc"
 
-plugins=(git fasd)
+plugins=(git fasd gradle osx)
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 export PYTHONSTARTUP=$HOME/.pythonrc
+export PYTHONDONTWRITEBYTECODE=True
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;35;40'
+export ANDROID_HOME="/Applications/Android Studio.app/sdk"
 
 ######## ENV DEPENDANT LOGIC ##########
 source $HOME/.envrc
@@ -25,6 +28,15 @@ if [[ $WORK == true ]] ; then
 		export MANPATH=$HOME/ansible/docs/man:
 		alias vsd="vagrant ssh dev"
 		alias ios6sdk_install="sudo ln -s ~/iPhoneOS6.0.sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs"
+		alias ios61sdk_install="sudo ln -s ~/iPhoneOS6.1.sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs"
+    
+    function run_e2e() {
+      cd ~
+      split_tab ./selenium/start
+      cd ~/Tryolabs/web
+      sleep 10
+      protractor protractorConf.js
+    }
 
 		function update_box() {
 			pushd /Users/memo/Tryolabs/deploy/provisioning
@@ -48,7 +60,12 @@ if [[ $PERSONAL == true ]] ; then
 	export PATH=$HOME/.rvm/gems/ruby-2.0.0-p195/bin:$HOME/.rvm/bin:$HOME/chrome:$HOME/android-sdk/tools:$PATH
 	export PATH=/usr/local/lib/node_modules:$PATH
 	export GOPATH=$HOME/gocode
+else
+  export PATH=$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools:$PATH
 fi
+
+
+
 ######## ENV DEPENDANT LOGIC ##########
 
 source $ZSH/oh-my-zsh.sh
@@ -103,3 +120,10 @@ else
 	export COLOR_THEME="Solarized Dark"
 fi
 
+alias vg="vim"
+alias gf="gs --porcelain | cut -c 4-"
+_vg () {
+  gf > ~/.gfcache
+  compadd -X "=== Vit ===" `cat ~/.gfcache`
+}
+compdef _vg vg
