@@ -5,11 +5,14 @@ alias gs='git status'
 alias gpo='gp origin'
 alias grp="grep --exclude=\*.{pyc,swp} --exclude-dir=.git -iR"
 alias grj="grep --exclude=\*.swp --exclude-dir={.git,dist,node_modules,app/components,app/assets} -iR"
+alias gra="grep --exclude=\*.{class,swp} --exclude-dir={.git,app/build} -iR"
 alias zrc="vim ~/.zshrc; source ~/.zshrc"
 
 plugins=(git fasd gradle osx)
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH=/usr/local/share/npm/bin:$PATH
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_60.jdk/Contents/Home
 export PYTHONSTARTUP=$HOME/.pythonrc
 export PYTHONDONTWRITEBYTECODE=True
 export GREP_OPTIONS='--color=auto'
@@ -58,7 +61,6 @@ fi
 if [[ $PERSONAL == true ]] ; then
 	export PATH=$HOME/android-sdk/build-tools/18.1.1/:$HOME/android-sdk/platform-tools:$HOME/android-sdk/build-tools:$PATH
 	export PATH=$HOME/.rvm/gems/ruby-2.0.0-p195/bin:$HOME/.rvm/bin:$HOME/chrome:$HOME/android-sdk/tools:$PATH
-	export PATH=/usr/local/lib/node_modules:$PATH
 	export GOPATH=$HOME/gocode
 else
   export PATH=$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools:$PATH
