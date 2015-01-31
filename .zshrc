@@ -1,11 +1,12 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 
-alias gs='git status'
 alias gpo='gp origin'
-alias grp="grep --exclude=\*.{pyc,swp} --exclude-dir=.git -iR"
-alias grj="grep --exclude=\*.swp --exclude-dir={.git,dist,node_modules,app/components,app/assets} -iR"
-alias gra="grep --exclude=\*.{class,swp} --exclude-dir={.git,app/build} -iR"
+alias agp="ag --python"
+alias agn="ag --ignore-dir dist"
+alias aga="ag --java"
+alias gs='git status'
+alias guc="git reset --soft HEAD~1"
 alias zrc="vim ~/.zshrc; source ~/.zshrc"
 
 plugins=(git fasd gradle osx)
