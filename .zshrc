@@ -15,9 +15,9 @@ plugins=(git fasd gradle osx ag django)
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 export PATH=/usr/local/share/npm/bin:$PATH
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_60.jdk/Contents/Home
 export PYTHONSTARTUP=$HOME/.pythonrc
-export PYTHONDONTWRITEBYTECODE=1
+export PYTHONDONTWRITEBYTECODE=True
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_60.jdk/Contents/Home
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;35;40'
 export ANDROID_HOME="~/android-sdk-macosx/platform-tools/"
@@ -82,8 +82,10 @@ if [[ $WORK == true ]] ; then
 	fi
 fi
 if [[ $PERSONAL == true ]] ; then
-	export PATH=$HOME/android-sdk/build-tools/18.1.1/:$HOME/android-sdk/platform-tools:$HOME/android-sdk/build-tools:$PATH
-	export PATH=$HOME/.rvm/gems/ruby-2.0.0-p195/bin:$HOME/.rvm/bin:$HOME/chrome:$HOME/android-sdk/tools:$PATH
+	export PATH=$HOME/android-sdk/build-tools/18.1.1:$HOME/android-sdk/platform-tools:$HOME/android-sdk/build-tools:$PATH
+  export PATH=$HOME/chrome:$HOME/android-sdk/tools:$PATH
+	export PATH=/usr/local/lib/node_modules:$PATH
+	export PATH=$HOME/.rvm/gems/ruby-2.0.0-p195/bin:$HOME/.rvm/bin:$PATH
 	export GOPATH=$HOME/gocode
 else
   export PATH=$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools:$PATH
