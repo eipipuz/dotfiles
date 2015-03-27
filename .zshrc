@@ -1,31 +1,37 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 
+alias scr='vim ~/scrum.txt'
 alias gpo='gp origin'
 alias agp="ag --python"
 alias agn="ag --ignore-dir dist"
-alias aga="ag --java"
+alias agjs="ag --js"
+alias aga="ag --java --ignore-dir build"
 alias gs='git status'
 alias guc="git reset --soft HEAD~1"
 alias zrc="vim ~/.zshrc; source ~/.zshrc"
 
-plugins=(git fasd gradle osx)
+plugins=(git fasd gradle osx ag django)
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 export PATH=/usr/local/share/npm/bin:$PATH
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_60.jdk/Contents/Home
 export PYTHONSTARTUP=$HOME/.pythonrc
-export PYTHONDONTWRITEBYTECODE=True
+export PYTHONDONTWRITEBYTECODE=1
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;35;40'
-export ANDROID_HOME="/Applications/Android Studio.app/sdk"
+export ANDROID_HOME="~/android-sdk-macosx/platform-tools/"
 
 ######## ENV DEPENDANT LOGIC ##########
 source $HOME/.envrc
 
+function set_brew() {
+  brew install fasd fzf git ruby tig vim the_silver_searcher
+}
+
 if [[ $WORK == true ]] ; then
 	if [[ $VIRTUAL == false ]] ; then
-		plugins+=(vagrant)
+		plugins+=(docker vagrant)
 		export PATH=/usr/local/share/npm/lib/node_modules/protractor/bin:$HOME/ansible/bin:/usr/local/Cellar/ruby/2.0.0-p247/bin:$PATH
 		export PYTHONPATH=$HOME/ansible/lib:$HOME/FuelSDK-Python:$HOME/Tryolabs/lively
 		export ANSIBLE_LIBRARY=$HOME/ansible/library
@@ -33,6 +39,8 @@ if [[ $WORK == true ]] ; then
 		alias vsd="vagrant ssh dev"
 		alias ios6sdk_install="sudo ln -s ~/iPhoneOS6.0.sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs"
 		alias ios61sdk_install="sudo ln -s ~/iPhoneOS6.1.sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs"
+    alias django="docker kill gunicorn && drun djangoshell"
+    $(boot2docker shellinit 2> /dev/null)
     
     function run_e2e() {
       cd ~
@@ -48,15 +56,29 @@ if [[ $WORK == true ]] ; then
 			popd
 		}
 
+    export LIVELY_REPO_DIR=/Users/memo/Tryolabs
+    function drun() {
+      pushd $LIVELY_REPO_DIR
+      ./deploy/docker/dev-scripts/run.sh $*
+      popd
+    }
+
 		function load_fixtures() {
 			pushd /Users/memo/Tryolabs/deploy/provisioning
 			ansible-playbook -i hosts_onebox extra-playbooks/onebox/qa_fixture.yml --limit=vagrantdev $*
 			popd
 		}
 
-		function migrate() {
-			python manage.py schemamigration core --settings=lively.settings_gunicorn --auto
+		function db_restore() {
+			pushd /Users/memo/Tryolabs/deploy/provisioning
+      ansible-playbook -i hosts_onebox extra-playbooks/onebox/db_restore.yml --limit=vagrantdev $*
+      popd
 		}
+
+    function start_docker() {
+      boot2docker init
+      boot2docker start
+    }
 	fi
 fi
 if [[ $PERSONAL == true ]] ; then
@@ -123,10 +145,6 @@ else
 	export COLOR_THEME="Solarized Dark"
 fi
 
-alias vg="vim"
-alias gf="gs --porcelain | cut -c 4-"
-_vg () {
-  gf > ~/.gfcache
-  compadd -X "=== Vit ===" `cat ~/.gfcache`
+function fa() {
+  gf | fzf -m --query="$1" | xargs git add
 }
-compdef _vg vg
