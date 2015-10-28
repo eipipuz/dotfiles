@@ -18,6 +18,7 @@ Bundle 'davidhalter/jedi-vim'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
 Bundle 'bling/vim-bufferline'
+Bundle 'junegunn/goyo.vim'
 
 set rtp+=/usr/local/Cellar/go/1.1.1/misc/vim/
 
@@ -77,3 +78,15 @@ let g:airline_symbols.linenr = ''
 let g:airline_section_x = 0
 let g:airline_section_y = 0
 let g:airline_theme = 'base16'
+
+" Prevent vim from capturing the selection from the mouse
+set mouse-=a
+
+" Change leader to spacebar
+let mapleader = "\<space>"
+
+" Buffer shortcuts
+nnoremap <leader>n :bn<CR>
+nnoremap <leader>p :bp<CR>
+nnoremap <leader>d :bd<CR>
+nnoremap <leader>l :ls<CR>
