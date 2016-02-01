@@ -2,23 +2,22 @@ syntax on
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'git://github.com/kien/ctrlp.vim.git'
-Bundle 'gmarik/vundle'
-Bundle 'scrooloose/syntastic'
-Bundle 'altercation/vim-colors-solarized'
-" Bundle 'git://github.com/scrooloose/nerdtree.git'
-" Bundle 'eipipuz/factor.vim'
-Bundle 'fholgado/vim-autoclose'
-Bundle 'davidhalter/jedi-vim'
-" Bundle 'kchmck/vim-coffee-script'
-" Bundle 'wting/rust.vim'
-Bundle 'bling/vim-airline'
-Bundle 'tpope/vim-fugitive'
-Bundle 'bling/vim-bufferline'
-Bundle 'junegunn/goyo.vim'
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'git://github.com/kien/ctrlp.vim.git'
+Plugin 'scrooloose/syntastic'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'fholgado/vim-autoclose'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-fugitive'
+Plugin 'bling/vim-bufferline'
+Plugin 'junegunn/goyo.vim'
+
+call vundle#end()
 
 set rtp+=/usr/local/Cellar/go/1.1.1/misc/vim/
 

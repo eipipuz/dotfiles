@@ -13,7 +13,7 @@ alias zrc="vim ~/.zshrc; source ~/.zshrc"
 
 plugins=(git fasd gradle osx ag django)
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 export PATH=/usr/local/share/npm/bin:$PATH
 export PYTHONSTARTUP=$HOME/.pythonrc
 export PYTHONDONTWRITEBYTECODE=True
@@ -86,10 +86,11 @@ if [[ $PERSONAL == true ]] ; then
   export PATH=$HOME/chrome:$HOME/android-sdk/tools:$PATH
 	export PATH=/usr/local/lib/node_modules:$PATH
 	export PATH=$HOME/.rvm/gems/ruby-2.0.0-p195/bin:$HOME/.rvm/bin:$PATH
-	export GOPATH=$HOME/gocode
 else
   export PATH=$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools:$PATH
 fi
+export PATH=/usr/local/bin:$PATH
+export GOPATH=$HOME/work
 
 
 

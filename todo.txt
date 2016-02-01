@@ -1,3 +1,11 @@
+* Change 'natural' scroll (os x)
+* Add back Dashboard as a Space (os x)
+* Add github keys
+* Install brew
+* Install spectacle
+* brew install git
+* brew install neovim/neovim/neovim
+* brew install the_silver_searcher
 * Add https://github.com/robbyrussell/oh-my-zsh installer
 	* brew install tig
 	* brew install fasd
@@ -6,8 +14,7 @@
 * Add https://github.com/tomislav/osx-terminal.app-colors-solarized installer
 * Add https://github.com/gmarik/vundle installer
 	* :BundleInstall
-
-* Add github keys
+* git clone https://github.com/powerline/fonts for the Anonymous Pro
 
 pip install pylint
 pip install jedi
