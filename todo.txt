@@ -1,5 +1,10 @@
 * Change 'natural' scroll (os x)
 * Add back Dashboard as a Space (os x)
+* brew cask install iterm2
+  * Keys ( alt left arrow -> esc seq + b; alt right arrow -> esc seq f) 
+  * Colors ( load solarized )
+  * Text (font 14pt Anonymice Powerline)
+  * Pointer ( focus follows mouse )
 * Add github keys
 * Install brew
 * Install spectacle
