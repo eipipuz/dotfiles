@@ -7,8 +7,13 @@ alias agp="ag --python"
 alias agn="ag --ignore-dir dist"
 alias agjs="ag --js"
 alias aga="ag --java --ignore-dir build"
+alias agg="ag --go --ignore-dir vendor"
 alias gs='git status'
 alias guc="git reset --soft HEAD~1"
+alias gam="git commit -v -a --amend"
+alias gne="git commit -v -a --amend --no-edit"
+alias grbom="grb origin/master"
+alias grbod="grb origin/development"
 alias zrc="vim ~/.zshrc; source ~/.zshrc"
 
 plugins=(git fasd gradle osx ag django)
@@ -36,7 +41,6 @@ if [[ $WORK == true ]] ; then
 		export PYTHONPATH=$HOME/ansible/lib:$HOME/FuelSDK-Python:$HOME/Tryolabs/lively
 		export ANSIBLE_LIBRARY=$HOME/ansible/library
 		export MANPATH=$HOME/ansible/docs/man:
-		alias vsd="vagrant ssh dev"
 		alias ios6sdk_install="sudo ln -s ~/iPhoneOS6.0.sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs"
 		alias ios61sdk_install="sudo ln -s ~/iPhoneOS6.1.sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs"
     alias django="docker kill gunicorn && drun djangoshell"
