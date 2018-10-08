@@ -1,0 +1,5 @@
+#compdef gpod
+
+# _arguments '1:first arg:_get_branches'
+
+_alternative "b:git branch:($(git branch | cut -c 3-))"
