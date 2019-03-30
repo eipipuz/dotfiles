@@ -28,75 +28,19 @@ export GREP_COLOR='1;35;40'
 export ANDROID_HOME="~/android-sdk-macosx/platform-tools/"
 
 ######## ENV DEPENDANT LOGIC ##########
-source $HOME/.envrc
-
 function set_brew() {
   brew install fasd fzf git ruby tig vim the_silver_searcher
 }
 
-if [[ $WORK == true ]] ; then
-	if [[ $VIRTUAL == false ]] ; then
-		plugins+=(docker vagrant)
-		export PATH=/usr/local/share/npm/lib/node_modules/protractor/bin:$HOME/ansible/bin:/usr/local/Cellar/ruby/2.0.0-p247/bin:$PATH
-		export PYTHONPATH=$HOME/ansible/lib:$HOME/FuelSDK-Python:$HOME/Tryolabs/lively
-		export ANSIBLE_LIBRARY=$HOME/ansible/library
-		export MANPATH=$HOME/ansible/docs/man:
-		alias ios6sdk_install="sudo ln -s ~/iPhoneOS6.0.sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs"
-		alias ios61sdk_install="sudo ln -s ~/iPhoneOS6.1.sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs"
-    alias django="docker kill gunicorn && drun djangoshell"
-    $(boot2docker shellinit 2> /dev/null)
-    
-    function run_e2e() {
-      cd ~
-      split_tab ./selenium/start
-      cd ~/Tryolabs/web
-      sleep 10
-      protractor protractorConf.js
-    }
-
-		function update_box() {
-			pushd /Users/memo/Tryolabs/deploy/provisioning
-			ansible-playbook -i hosts_onebox site_onebox.yml --limit=vagrantdev $*
-			popd
-		}
-
-    export LIVELY_REPO_DIR=/Users/memo/Tryolabs
-    function drun() {
-      pushd $LIVELY_REPO_DIR
-      ./deploy/docker/dev-scripts/run.sh $*
-      popd
-    }
-
-		function load_fixtures() {
-			pushd /Users/memo/Tryolabs/deploy/provisioning
-			ansible-playbook -i hosts_onebox extra-playbooks/onebox/qa_fixture.yml --limit=vagrantdev $*
-			popd
-		}
-
-		function db_restore() {
-			pushd /Users/memo/Tryolabs/deploy/provisioning
-      ansible-playbook -i hosts_onebox extra-playbooks/onebox/db_restore.yml --limit=vagrantdev $*
-      popd
-		}
-
-    function start_docker() {
-      boot2docker init
-      boot2docker start
-    }
-	fi
-fi
 if [[ $PERSONAL == true ]] ; then
 	export PATH=$HOME/android-sdk/build-tools/18.1.1:$HOME/android-sdk/platform-tools:$HOME/android-sdk/build-tools:$PATH
   export PATH=$HOME/chrome:$HOME/android-sdk/tools:$PATH
 	export PATH=/usr/local/lib/node_modules:$PATH
-	export PATH=$HOME/.rvm/gems/ruby-2.0.0-p195/bin:$HOME/.rvm/bin:$PATH
 else
   export PATH=$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools:$PATH
 fi
 export PATH=/usr/local/bin:$PATH
 export GOPATH=$HOME/work
-
-
 
 ######## ENV DEPENDANT LOGIC ##########
 
@@ -144,10 +88,6 @@ else
 		fi
 		echo -e "\033]6;1;bg;*;default\a"
   }
-
-	alias man_box="sshInto Production red 54.215.223.59"
-	alias log_box="sshInto Logistics green 50.18.222.180"
-	alias ci_box="sshInto Development blue ci.mylivelydev.com"
 
 	export COLOR_THEME="Solarized Dark"
 fi

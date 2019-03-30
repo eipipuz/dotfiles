@@ -40,7 +40,6 @@ else
 "	highlight ColorColumn ctermbg=lightgray
 endif
 let g:solarized_termtrans = 1
-colorscheme solarized
 
 set shiftwidth=2 tabstop=2
 

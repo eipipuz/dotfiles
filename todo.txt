@@ -1,5 +1,4 @@
 * Change 'natural' scroll (os x)
-* Add back Dashboard as a Space (os x)
 * brew cask install iterm2
   * Keys ( alt left arrow -> esc seq + b; alt right arrow -> esc seq f) 
   * Colors ( load solarized )
@@ -9,7 +8,6 @@
 * Install brew
 * Install spectacle
 * brew install git
-* brew install neovim/neovim/neovim
 * brew install the_silver_searcher
 * Add https://github.com/robbyrussell/oh-my-zsh installer
 	* brew install tig
