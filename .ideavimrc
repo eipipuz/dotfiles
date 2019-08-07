@@ -1,0 +1,18 @@
+" esc in insert mode
+inoremap kj <esc>
+
+" esc in command mode 
+cnoremap kj <C-C> 
+
+nnoremap <Space>a :action GotoAction<CR>
+nnoremap <Space>c :action GotoClass<CR>
+nnoremap <Space>d :action Debug<CR>
+nnoremap <Space>e :action GotoNextError<CR>
+nnoremap <Space>f :action GotoFile<CR>
+nnoremap <Space>g :action Annotate<CR>
+nnoremap <Space>h :action TypeHierarchy<CR>
+nnoremap <Space>l :action ReformatCode<CR>
+nnoremap <Space>o :action OptimizeImports<CR>
+nnoremap <Space>r :action Run<CR>
+nnoremap <Space>s :action Stop<CR>
+nnoremap <Space>z :action Vcs.RollbackChangedLines<CR>
